@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xseshop.dao.UserAuthinfoDao">
+  <resultMap id="BaseResultMap" type="com.xseshop.entity.UserAuthinfo">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    <id column="auth_id" jdbcType="VARCHAR" property="authId" />
+    <result column="useer_id" jdbcType="VARCHAR" property="useerId" />
+    <result column="auth_type" jdbcType="VARCHAR" property="authType" />
+    <result column="auth_status" jdbcType="VARCHAR" property="authStatus" />
+    <result column="auth_time" jdbcType="TIMESTAMP" property="authTime" />
+    <result column="auth_remark" jdbcType="VARCHAR" property="authRemark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    <where>
+      <foreach collection="criteria.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    auth_id, useer_id, auth_type, auth_status, auth_time, auth_remark, create_time, update_time
+  </sql>
+  <select id="selectByCriteria" parameterType="com.xseshop.entity.UserAuthinfoCriteria" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_user_authinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="start != null and size !=null ">
+      limit #{start} , #{size}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_authinfo
+    where auth_id = #{authId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    delete from t_user_authinfo
+    where auth_id = #{authId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.xseshop.entity.UserAuthinfoCriteria">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    delete from t_user_authinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insertSelective" parameterType="com.xseshop.entity.UserAuthinfo">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    insert into t_user_authinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="authId != null">
+        auth_id,
+      </if>
+      <if test="useerId != null">
+        useer_id,
+      </if>
+      <if test="authType != null">
+        auth_type,
+      </if>
+      <if test="authStatus != null">
+        auth_status,
+      </if>
+      <if test="authTime != null">
+        auth_time,
+      </if>
+      <if test="authRemark != null">
+        auth_remark,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="authId != null">
+        #{authId,jdbcType=VARCHAR},
+      </if>
+      <if test="useerId != null">
+        #{useerId,jdbcType=VARCHAR},
+      </if>
+      <if test="authType != null">
+        #{authType,jdbcType=VARCHAR},
+      </if>
+      <if test="authStatus != null">
+        #{authStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="authTime != null">
+        #{authTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="authRemark != null">
+        #{authRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByCriteria" parameterType="com.xseshop.entity.UserAuthinfoCriteria" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    select count(*) from t_user_authinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteriaSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    update t_user_authinfo
+    <set>
+      <if test="record.useerId != null">
+        useer_id = #{record.useerId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authType != null">
+        auth_type = #{record.authType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authStatus != null">
+        auth_status = #{record.authStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authTime != null">
+        auth_time = #{record.authTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.authRemark != null">
+        auth_remark = #{record.authRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xseshop.entity.UserAuthinfo">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    update t_user_authinfo
+    <set>
+      <if test="useerId != null">
+        useer_id = #{useerId,jdbcType=VARCHAR},
+      </if>
+      <if test="authType != null">
+        auth_type = #{authType,jdbcType=VARCHAR},
+      </if>
+      <if test="authStatus != null">
+        auth_status = #{authStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="authTime != null">
+        auth_time = #{authTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="authRemark != null">
+        auth_remark = #{authRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where auth_id = #{authId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectSingleByCriteria" parameterType="com.xseshop.entity.UserAuthinfoCriteria" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_user_authinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <insert id="insertBatchSelective" parameterType="java.util.List">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    insert into t_user_authinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="list[0].authId!=null">
+        auth_id,
+      </if>
+      <if test="list[0].useerId!=null">
+        useer_id,
+      </if>
+      <if test="list[0].authType!=null">
+        auth_type,
+      </if>
+      <if test="list[0].authStatus!=null">
+        auth_status,
+      </if>
+      <if test="list[0].authTime!=null">
+        auth_time,
+      </if>
+      <if test="list[0].authRemark!=null">
+        auth_remark,
+      </if>
+      <if test="list[0].createTime!=null">
+        create_time,
+      </if>
+      <if test="list[0].updateTime!=null">
+        update_time,
+      </if>
+    </trim>
+     values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      <trim prefix=" (" suffix=")" suffixOverrides=",">
+        <if test="item.authId!=null">
+          #{item.authId,jdbcType=VARCHAR},
+        </if>
+        <if test="item.useerId!=null">
+          #{item.useerId,jdbcType=VARCHAR},
+        </if>
+        <if test="item.authType!=null">
+          #{item.authType,jdbcType=VARCHAR},
+        </if>
+        <if test="item.authStatus!=null">
+          #{item.authStatus,jdbcType=VARCHAR},
+        </if>
+        <if test="item.authTime!=null">
+          #{item.authTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.authRemark!=null">
+          #{item.authRemark,jdbcType=VARCHAR},
+        </if>
+        <if test="item.createTime!=null">
+          #{item.createTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.updateTime!=null">
+          #{item.updateTime,jdbcType=TIMESTAMP},
+        </if>
+      </trim>
+    </foreach>
+  </insert>
+  <update id="updateBatchByPrimaryKeySelective" parameterType="java.util.List">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    <foreach collection="list" index="index" item="item" separator=";">
+      update t_user_authinfo
+      <set>
+        <if test="item.useerId!=null">
+          useer_id=#{item.useerId,jdbcType=VARCHAR},
+        </if>
+        <if test="item.authType!=null">
+          auth_type=#{item.authType,jdbcType=VARCHAR},
+        </if>
+        <if test="item.authStatus!=null">
+          auth_status=#{item.authStatus,jdbcType=VARCHAR},
+        </if>
+        <if test="item.authTime!=null">
+          auth_time=#{item.authTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.authRemark!=null">
+          auth_remark=#{item.authRemark,jdbcType=VARCHAR},
+        </if>
+        <if test="item.createTime!=null">
+          create_time=#{item.createTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.updateTime!=null">
+          update_time=#{item.updateTime,jdbcType=TIMESTAMP},
+        </if>
+      </set>
+      where 
+      auth_id = #{item.authId,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+</mapper>

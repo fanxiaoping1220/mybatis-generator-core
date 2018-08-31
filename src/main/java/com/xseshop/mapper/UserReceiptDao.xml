@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xseshop.dao.UserReceiptDao">
+  <resultMap id="BaseResultMap" type="com.xseshop.entity.UserReceipt">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    <id column="receipt_id" jdbcType="VARCHAR" property="receiptId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="receipt_status" jdbcType="VARCHAR" property="receiptStatus" />
+    <result column="receipt_mobile" jdbcType="VARCHAR" property="receiptMobile" />
+    <result column="receipt_address" jdbcType="VARCHAR" property="receiptAddress" />
+    <result column="zipcode" jdbcType="VARCHAR" property="zipcode" />
+    <result column="is_default" jdbcType="VARCHAR" property="isDefault" />
+    <result column="receipt_mark" jdbcType="VARCHAR" property="receiptMark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    <where>
+      <foreach collection="criteria.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    receipt_id, user_id, receipt_status, receipt_mobile, receipt_address, zipcode, is_default, 
+    receipt_mark, create_time, update_time
+  </sql>
+  <select id="selectByCriteria" parameterType="com.xseshop.entity.UserReceiptCriteria" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_user_receipt
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="start != null and size !=null ">
+      limit #{start} , #{size}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_receipt
+    where receipt_id = #{receiptId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    delete from t_user_receipt
+    where receipt_id = #{receiptId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.xseshop.entity.UserReceiptCriteria">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    delete from t_user_receipt
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insertSelective" parameterType="com.xseshop.entity.UserReceipt">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    insert into t_user_receipt
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="receiptId != null">
+        receipt_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="receiptStatus != null">
+        receipt_status,
+      </if>
+      <if test="receiptMobile != null">
+        receipt_mobile,
+      </if>
+      <if test="receiptAddress != null">
+        receipt_address,
+      </if>
+      <if test="zipcode != null">
+        zipcode,
+      </if>
+      <if test="isDefault != null">
+        is_default,
+      </if>
+      <if test="receiptMark != null">
+        receipt_mark,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="receiptId != null">
+        #{receiptId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptStatus != null">
+        #{receiptStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptMobile != null">
+        #{receiptMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptAddress != null">
+        #{receiptAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null">
+        #{zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null">
+        #{isDefault,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptMark != null">
+        #{receiptMark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByCriteria" parameterType="com.xseshop.entity.UserReceiptCriteria" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    select count(*) from t_user_receipt
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteriaSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    update t_user_receipt
+    <set>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiptStatus != null">
+        receipt_status = #{record.receiptStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiptMobile != null">
+        receipt_mobile = #{record.receiptMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiptAddress != null">
+        receipt_address = #{record.receiptAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zipcode != null">
+        zipcode = #{record.zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDefault != null">
+        is_default = #{record.isDefault,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiptMark != null">
+        receipt_mark = #{record.receiptMark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xseshop.entity.UserReceipt">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    update t_user_receipt
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptStatus != null">
+        receipt_status = #{receiptStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptMobile != null">
+        receipt_mobile = #{receiptMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptAddress != null">
+        receipt_address = #{receiptAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null">
+        zipcode = #{zipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null">
+        is_default = #{isDefault,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptMark != null">
+        receipt_mark = #{receiptMark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where receipt_id = #{receiptId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectSingleByCriteria" parameterType="com.xseshop.entity.UserReceiptCriteria" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_user_receipt
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <insert id="insertBatchSelective" parameterType="java.util.List">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    insert into t_user_receipt
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="list[0].receiptId!=null">
+        receipt_id,
+      </if>
+      <if test="list[0].userId!=null">
+        user_id,
+      </if>
+      <if test="list[0].receiptStatus!=null">
+        receipt_status,
+      </if>
+      <if test="list[0].receiptMobile!=null">
+        receipt_mobile,
+      </if>
+      <if test="list[0].receiptAddress!=null">
+        receipt_address,
+      </if>
+      <if test="list[0].zipcode!=null">
+        zipcode,
+      </if>
+      <if test="list[0].isDefault!=null">
+        is_default,
+      </if>
+      <if test="list[0].receiptMark!=null">
+        receipt_mark,
+      </if>
+      <if test="list[0].createTime!=null">
+        create_time,
+      </if>
+      <if test="list[0].updateTime!=null">
+        update_time,
+      </if>
+    </trim>
+     values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      <trim prefix=" (" suffix=")" suffixOverrides=",">
+        <if test="item.receiptId!=null">
+          #{item.receiptId,jdbcType=VARCHAR},
+        </if>
+        <if test="item.userId!=null">
+          #{item.userId,jdbcType=VARCHAR},
+        </if>
+        <if test="item.receiptStatus!=null">
+          #{item.receiptStatus,jdbcType=VARCHAR},
+        </if>
+        <if test="item.receiptMobile!=null">
+          #{item.receiptMobile,jdbcType=VARCHAR},
+        </if>
+        <if test="item.receiptAddress!=null">
+          #{item.receiptAddress,jdbcType=VARCHAR},
+        </if>
+        <if test="item.zipcode!=null">
+          #{item.zipcode,jdbcType=VARCHAR},
+        </if>
+        <if test="item.isDefault!=null">
+          #{item.isDefault,jdbcType=VARCHAR},
+        </if>
+        <if test="item.receiptMark!=null">
+          #{item.receiptMark,jdbcType=VARCHAR},
+        </if>
+        <if test="item.createTime!=null">
+          #{item.createTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.updateTime!=null">
+          #{item.updateTime,jdbcType=TIMESTAMP},
+        </if>
+      </trim>
+    </foreach>
+  </insert>
+  <update id="updateBatchByPrimaryKeySelective" parameterType="java.util.List">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2017-10-31 17:04
+    -->
+    <foreach collection="list" index="index" item="item" separator=";">
+      update t_user_receipt
+      <set>
+        <if test="item.userId!=null">
+          user_id=#{item.userId,jdbcType=VARCHAR},
+        </if>
+        <if test="item.receiptStatus!=null">
+          receipt_status=#{item.receiptStatus,jdbcType=VARCHAR},
+        </if>
+        <if test="item.receiptMobile!=null">
+          receipt_mobile=#{item.receiptMobile,jdbcType=VARCHAR},
+        </if>
+        <if test="item.receiptAddress!=null">
+          receipt_address=#{item.receiptAddress,jdbcType=VARCHAR},
+        </if>
+        <if test="item.zipcode!=null">
+          zipcode=#{item.zipcode,jdbcType=VARCHAR},
+        </if>
+        <if test="item.isDefault!=null">
+          is_default=#{item.isDefault,jdbcType=VARCHAR},
+        </if>
+        <if test="item.receiptMark!=null">
+          receipt_mark=#{item.receiptMark,jdbcType=VARCHAR},
+        </if>
+        <if test="item.createTime!=null">
+          create_time=#{item.createTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.updateTime!=null">
+          update_time=#{item.updateTime,jdbcType=TIMESTAMP},
+        </if>
+      </set>
+      where 
+      receipt_id = #{item.receiptId,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+</mapper>
