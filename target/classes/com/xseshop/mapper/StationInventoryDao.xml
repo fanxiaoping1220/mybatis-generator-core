@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xseshop.dao.StationInventoryDao">
+  <resultMap id="BaseResultMap" type="com.xseshop.entity.StationInventory">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2018-08-31 14:40
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="station_no" jdbcType="VARCHAR" property="stationNo" />
+    <result column="inventory_no" jdbcType="VARCHAR" property="inventoryNo" />
+    <result column="storage_no" jdbcType="VARCHAR" property="storageNo" />
+    <result column="storage_name" jdbcType="VARCHAR" property="storageName" />
+    <result column="rack_no" jdbcType="VARCHAR" property="rackNo" />
+    <result column="rack_name" jdbcType="VARCHAR" property="rackName" />
+    <result column="subject_no" jdbcType="VARCHAR" property="subjectNo" />
+    <result column="identity_no" jdbcType="VARCHAR" property="identityNo" />
+    <result column="subject_name" jdbcType="VARCHAR" property="subjectName" />
+    <result column="stock" jdbcType="DOUBLE" property="stock" />
+    <result column="warn_low_line" jdbcType="DOUBLE" property="warnLowLine" />
+    <result column="warn_high_line" jdbcType="DOUBLE" property="warnHighLine" />
+    <result column="pollen_or_honey" jdbcType="TINYINT" property="pollenOrHoney" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2018-08-31 14:40
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2018-08-31 14:40
+    -->
+    <where>
+      <foreach collection="criteria.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2018-08-31 14:40
+    -->
+    id, station_no, inventory_no, storage_no, storage_name, rack_no, rack_name, subject_no, 
+    identity_no, subject_name, stock, warn_low_line, warn_high_line, pollen_or_honey
+  </sql>
+  <select id="selectByCriteria" parameterType="com.xseshop.entity.StationInventoryCriteria" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2018-08-31 14:40
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from station_inventory
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="start != null and size !=null ">
+      limit #{start} , #{size}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2018-08-31 14:40
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from station_inventory
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2018-08-31 14:40
+    -->
+    delete from station_inventory
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByCriteria" parameterType="com.xseshop.entity.StationInventoryCriteria">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2018-08-31 14:40
+    -->
+    delete from station_inventory
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insertSelective" parameterType="com.xseshop.entity.StationInventory">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2018-08-31 14:40
+    -->
+    insert into station_inventory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="stationNo != null">
+        station_no,
+      </if>
+      <if test="inventoryNo != null">
+        inventory_no,
+      </if>
+      <if test="storageNo != null">
+        storage_no,
+      </if>
+      <if test="storageName != null">
+        storage_name,
+      </if>
+      <if test="rackNo != null">
+        rack_no,
+      </if>
+      <if test="rackName != null">
+        rack_name,
+      </if>
+      <if test="subjectNo != null">
+        subject_no,
+      </if>
+      <if test="identityNo != null">
+        identity_no,
+      </if>
+      <if test="subjectName != null">
+        subject_name,
+      </if>
+      <if test="stock != null">
+        stock,
+      </if>
+      <if test="warnLowLine != null">
+        warn_low_line,
+      </if>
+      <if test="warnHighLine != null">
+        warn_high_line,
+      </if>
+      <if test="pollenOrHoney != null">
+        pollen_or_honey,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="stationNo != null">
+        #{stationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryNo != null">
+        #{inventoryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="storageNo != null">
+        #{storageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="storageName != null">
+        #{storageName,jdbcType=VARCHAR},
+      </if>
+      <if test="rackNo != null">
+        #{rackNo,jdbcType=VARCHAR},
+      </if>
+      <if test="rackName != null">
+        #{rackName,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectNo != null">
+        #{subjectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="identityNo != null">
+        #{identityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectName != null">
+        #{subjectName,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null">
+        #{stock,jdbcType=DOUBLE},
+      </if>
+      <if test="warnLowLine != null">
+        #{warnLowLine,jdbcType=DOUBLE},
+      </if>
+      <if test="warnHighLine != null">
+        #{warnHighLine,jdbcType=DOUBLE},
+      </if>
+      <if test="pollenOrHoney != null">
+        #{pollenOrHoney,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByCriteria" parameterType="com.xseshop.entity.StationInventoryCriteria" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2018-08-31 14:40
+    -->
+    select count(*) from station_inventory
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByCriteriaSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2018-08-31 14:40
+    -->
+    update station_inventory
+    <set>
+      <if test="record.stationNo != null">
+        station_no = #{record.stationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.inventoryNo != null">
+        inventory_no = #{record.inventoryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storageNo != null">
+        storage_no = #{record.storageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storageName != null">
+        storage_name = #{record.storageName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rackNo != null">
+        rack_no = #{record.rackNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rackName != null">
+        rack_name = #{record.rackName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subjectNo != null">
+        subject_no = #{record.subjectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.identityNo != null">
+        identity_no = #{record.identityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subjectName != null">
+        subject_name = #{record.subjectName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stock != null">
+        stock = #{record.stock,jdbcType=DOUBLE},
+      </if>
+      <if test="record.warnLowLine != null">
+        warn_low_line = #{record.warnLowLine,jdbcType=DOUBLE},
+      </if>
+      <if test="record.warnHighLine != null">
+        warn_high_line = #{record.warnHighLine,jdbcType=DOUBLE},
+      </if>
+      <if test="record.pollenOrHoney != null">
+        pollen_or_honey = #{record.pollenOrHoney,jdbcType=TINYINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xseshop.entity.StationInventory">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2018-08-31 14:40
+    -->
+    update station_inventory
+    <set>
+      <if test="stationNo != null">
+        station_no = #{stationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryNo != null">
+        inventory_no = #{inventoryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="storageNo != null">
+        storage_no = #{storageNo,jdbcType=VARCHAR},
+      </if>
+      <if test="storageName != null">
+        storage_name = #{storageName,jdbcType=VARCHAR},
+      </if>
+      <if test="rackNo != null">
+        rack_no = #{rackNo,jdbcType=VARCHAR},
+      </if>
+      <if test="rackName != null">
+        rack_name = #{rackName,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectNo != null">
+        subject_no = #{subjectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="identityNo != null">
+        identity_no = #{identityNo,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectName != null">
+        subject_name = #{subjectName,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null">
+        stock = #{stock,jdbcType=DOUBLE},
+      </if>
+      <if test="warnLowLine != null">
+        warn_low_line = #{warnLowLine,jdbcType=DOUBLE},
+      </if>
+      <if test="warnHighLine != null">
+        warn_high_line = #{warnHighLine,jdbcType=DOUBLE},
+      </if>
+      <if test="pollenOrHoney != null">
+        pollen_or_honey = #{pollenOrHoney,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectSingleByCriteria" parameterType="com.xseshop.entity.StationInventoryCriteria" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2018-08-31 14:40
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from station_inventory
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <insert id="insertBatchSelective" parameterType="java.util.List">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2018-08-31 14:40
+    -->
+    insert into station_inventory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="list[0].id!=null">
+        id,
+      </if>
+      <if test="list[0].stationNo!=null">
+        station_no,
+      </if>
+      <if test="list[0].inventoryNo!=null">
+        inventory_no,
+      </if>
+      <if test="list[0].storageNo!=null">
+        storage_no,
+      </if>
+      <if test="list[0].storageName!=null">
+        storage_name,
+      </if>
+      <if test="list[0].rackNo!=null">
+        rack_no,
+      </if>
+      <if test="list[0].rackName!=null">
+        rack_name,
+      </if>
+      <if test="list[0].subjectNo!=null">
+        subject_no,
+      </if>
+      <if test="list[0].identityNo!=null">
+        identity_no,
+      </if>
+      <if test="list[0].subjectName!=null">
+        subject_name,
+      </if>
+      <if test="list[0].stock!=null">
+        stock,
+      </if>
+      <if test="list[0].warnLowLine!=null">
+        warn_low_line,
+      </if>
+      <if test="list[0].warnHighLine!=null">
+        warn_high_line,
+      </if>
+      <if test="list[0].pollenOrHoney!=null">
+        pollen_or_honey,
+      </if>
+    </trim>
+     values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      <trim prefix=" (" suffix=")" suffixOverrides=",">
+        <if test="item.id!=null">
+          #{item.id,jdbcType=BIGINT},
+        </if>
+        <if test="item.stationNo!=null">
+          #{item.stationNo,jdbcType=VARCHAR},
+        </if>
+        <if test="item.inventoryNo!=null">
+          #{item.inventoryNo,jdbcType=VARCHAR},
+        </if>
+        <if test="item.storageNo!=null">
+          #{item.storageNo,jdbcType=VARCHAR},
+        </if>
+        <if test="item.storageName!=null">
+          #{item.storageName,jdbcType=VARCHAR},
+        </if>
+        <if test="item.rackNo!=null">
+          #{item.rackNo,jdbcType=VARCHAR},
+        </if>
+        <if test="item.rackName!=null">
+          #{item.rackName,jdbcType=VARCHAR},
+        </if>
+        <if test="item.subjectNo!=null">
+          #{item.subjectNo,jdbcType=VARCHAR},
+        </if>
+        <if test="item.identityNo!=null">
+          #{item.identityNo,jdbcType=VARCHAR},
+        </if>
+        <if test="item.subjectName!=null">
+          #{item.subjectName,jdbcType=VARCHAR},
+        </if>
+        <if test="item.stock!=null">
+          #{item.stock,jdbcType=DOUBLE},
+        </if>
+        <if test="item.warnLowLine!=null">
+          #{item.warnLowLine,jdbcType=DOUBLE},
+        </if>
+        <if test="item.warnHighLine!=null">
+          #{item.warnHighLine,jdbcType=DOUBLE},
+        </if>
+        <if test="item.pollenOrHoney!=null">
+          #{item.pollenOrHoney,jdbcType=TINYINT},
+        </if>
+      </trim>
+    </foreach>
+  </insert>
+  <update id="updateBatchByPrimaryKeySelective" parameterType="java.util.List">
+    <!--
+      WARNING - @mbg.generated
+      此SQL语句为自动生成，请不要修改.
+      DATE: 2018-08-31 14:40
+    -->
+    <foreach collection="list" index="index" item="item" separator=";">
+      update station_inventory
+      <set>
+        <if test="item.stationNo!=null">
+          station_no=#{item.stationNo,jdbcType=VARCHAR},
+        </if>
+        <if test="item.inventoryNo!=null">
+          inventory_no=#{item.inventoryNo,jdbcType=VARCHAR},
+        </if>
+        <if test="item.storageNo!=null">
+          storage_no=#{item.storageNo,jdbcType=VARCHAR},
+        </if>
+        <if test="item.storageName!=null">
+          storage_name=#{item.storageName,jdbcType=VARCHAR},
+        </if>
+        <if test="item.rackNo!=null">
+          rack_no=#{item.rackNo,jdbcType=VARCHAR},
+        </if>
+        <if test="item.rackName!=null">
+          rack_name=#{item.rackName,jdbcType=VARCHAR},
+        </if>
+        <if test="item.subjectNo!=null">
+          subject_no=#{item.subjectNo,jdbcType=VARCHAR},
+        </if>
+        <if test="item.identityNo!=null">
+          identity_no=#{item.identityNo,jdbcType=VARCHAR},
+        </if>
+        <if test="item.subjectName!=null">
+          subject_name=#{item.subjectName,jdbcType=VARCHAR},
+        </if>
+        <if test="item.stock!=null">
+          stock=#{item.stock,jdbcType=DOUBLE},
+        </if>
+        <if test="item.warnLowLine!=null">
+          warn_low_line=#{item.warnLowLine,jdbcType=DOUBLE},
+        </if>
+        <if test="item.warnHighLine!=null">
+          warn_high_line=#{item.warnHighLine,jdbcType=DOUBLE},
+        </if>
+        <if test="item.pollenOrHoney!=null">
+          pollen_or_honey=#{item.pollenOrHoney,jdbcType=TINYINT},
+        </if>
+      </set>
+      where 
+      id = #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+</mapper>

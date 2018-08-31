@@ -74,8 +74,8 @@
 		</commentGenerator>
 
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://47.93.38.114:3306/XSeshop?characterEncoding=UTF-8"
-			userId="look" password="look_20170910">
+			connectionURL="jdbc:mysql://192.168.10.251:3306/beegather_station?characterEncoding=UTF-8"
+			userId="beegather_station" password="beegather@station@bsbdj">
 			<property name="remarks" value="true" />
 		</jdbcConnection>
 		<!--转换数据类型，通过自定义将BIT和TINYINT转换为integer -->
@@ -95,25 +95,25 @@
 			targetProject="src\main\java" type="org.mybatis.generator.plugins.MyJavaMapperGenerator" />
 
 		<!-- 要生成哪些表：tableName：需要生成的表名；domainObjectName：自定义的对应改表的实体类名称； -->
-		<table schema="xseshop" tableName="t_user" >
-			<!-- 如果是自增主键，column需要修改为自己的主键名称 -->
-			<!-- <generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()"></generatedKey> -->
-		</table>
-		<table schema="xseshop" tableName="t_user" >
-        </table>
-		<table schema="xseshop" tableName="t_user_authinfo" >
-        </table>
-		<table schema="xseshop" tableName="t_user_bankcard" >
-        </table>
-		<table schema="xseshop" tableName="t_user_identity" >
-        </table>
-		<table schema="xseshop" tableName="t_user_login" >
-        </table>
-        <table schema="xseshop" tableName="t_user_mobile_bind" >
-        </table>
-        <table schema="xseshop" tableName="t_user_password" >
-        </table>
-        <table schema="xseshop" tableName="t_user_receipt" >
+		<!--<table schema="xseshop" tableName="t_user" >-->
+			<!--&lt;!&ndash; 如果是自增主键，column需要修改为自己的主键名称 &ndash;&gt;-->
+			<!--&lt;!&ndash; <generatedKey identity="true" column="id" sqlStatement="SELECT LAST_INSERT_ID()"></generatedKey> &ndash;&gt;-->
+		<!--</table>-->
+		<!--<table schema="xseshop" tableName="t_user" >-->
+        <!--</table>-->
+		<!--<table schema="xseshop" tableName="t_user_authinfo" >-->
+        <!--</table>-->
+		<!--<table schema="xseshop" tableName="t_user_bankcard" >-->
+        <!--</table>-->
+		<!--<table schema="xseshop" tableName="t_user_identity" >-->
+        <!--</table>-->
+		<!--<table schema="xseshop" tableName="t_user_login" >-->
+        <!--</table>-->
+        <!--<table schema="xseshop" tableName="t_user_mobile_bind" >-->
+        <!--</table>-->
+        <!--<table schema="xseshop" tableName="t_user_password" >-->
+        <!--</table>-->
+        <table schema="beegather_station" tableName="station_inventory" >
         </table>
 	</context>
 </generatorConfiguration>
